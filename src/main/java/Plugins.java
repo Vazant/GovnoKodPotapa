@@ -4,6 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Plugins {
+    FileProcessing fp = new FileProcessing();
+
     void CastOneLine(StringBuffer text) {
         Pattern p = Pattern.compile("\\n\\s*");
         Matcher m = p.matcher(text);
@@ -11,7 +13,7 @@ class Plugins {
             text.replace(m.start(), m.end(), "");
             m = p.matcher(text);
         }
-        FileProcessing.text = text;
+        fp.text = text;
     }
 
     void DeleteExtSpaces(StringBuffer text) {
@@ -21,7 +23,7 @@ class Plugins {
             text.replace(m.start(), m.end(), " ");
             m = p.matcher(text);
         }
-        FileProcessing.text = text;
+        fp.text = text;
     }
 
     void DeleteExtNewline(StringBuffer text) {
@@ -31,7 +33,7 @@ class Plugins {
             text.replace(m.start(), m.end(), "\n\n");
             m = p.matcher(text);
         }
-        FileProcessing.text = text;
+        fp.text = text;
     }
 
     void DeleteBeginningWhitespace(StringBuffer text) {
@@ -41,7 +43,7 @@ class Plugins {
             text.replace(m.start(), m.end(), "\n");
             m = p.matcher(text);
         }
-        FileProcessing.text = text;
+        fp.text = text;
     }
 
     void DeleteTheLastWhitespace(StringBuffer text) {
@@ -51,7 +53,7 @@ class Plugins {
             text.replace(m.start(), m.end(), "\n");
             m = p.matcher(text);
         }
-        FileProcessing.text = text;
+        fp.text = text;
     }
 
     void DeleteLogs(StringBuffer text) {
@@ -61,7 +63,7 @@ class Plugins {
             text.replace(m.start(), m.end(), "");
             m = p.matcher(text);
         }
-        FileProcessing.text = text;
+        fp.text = text;
     }
 
     void DeleteSLC(StringBuffer text) {
@@ -148,7 +150,7 @@ class Plugins {
             m = p.matcher(text);
         }
         text = new StringBuffer( result.append(text));
-        FileProcessing.text = text;
+        fp.text = text;
     }
 
     void DeleteMLC(StringBuffer text) {
@@ -235,7 +237,7 @@ class Plugins {
             m = p.matcher(text);
         }
         text = new StringBuffer( result.append(text));
-        FileProcessing.text = text;
+        fp.text = text;
 
     }
 

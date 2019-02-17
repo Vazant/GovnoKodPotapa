@@ -18,7 +18,7 @@ public class Main {
         }
 
         Plugins plugins = new Plugins();
-        FileProcessing fileProcessing = new FileProcessing();
+        FileProcessing fp = new FileProcessing();
 
         File firstArg = new File(firstPath).getAbsoluteFile();
         File secondArg = new File(secondPath).getAbsoluteFile();
@@ -42,10 +42,10 @@ public class Main {
                 new DeleteMLCCommand(plugins)
         );
 
-        fileProcessing.createNewFile(secondArg);
+        fp.createNewFile(secondArg);
 
         if (firstArg.isFile() && secondArg.isFile()) {
-            FileProcessing.text = fileProcessing.readText(firstArg.getPath());
+            fp.text = fp.readText(firstArg.getPath());
             try {
                 String[] conf = cofigurations[Integer.parseInt(System.getProperty("configType"))].split(" ");
                 int i = 0;
@@ -56,13 +56,13 @@ public class Main {
                     i++;
                 }
                 pathToFile = new String[]{secondArg.getAbsolutePath()};
-                fileProcessing.saveFile(pathToFile);
+                fp.saveFile(pathToFile);
             } catch (ArrayIndexOutOfBoundsException exception) {
                 System.out.println("You entered an invalid value for the \"Configuration\" argument. It takes values from 0 to 3");
             }
 
         } else if (firstArg.isFile() && secondArg.isDirectory()) {
-            FileProcessing.text = fileProcessing.readText(firstArg.getPath());
+            fp.text = fp.readText(firstArg.getPath());
 
             try {
                 String[] conf = cofigurations[Integer.parseInt(System.getProperty("configType"))].split(" ");
@@ -74,7 +74,7 @@ public class Main {
                     i++;
                 }
                 pathToFile = new String[]{firstArg.getName(), secondArg.getPath()};
-                fileProcessing.saveFile(pathToFile);
+                fp.saveFile(pathToFile);
 
             } catch (ArrayIndexOutOfBoundsException exception) {
                 System.out.println("You entered an invalid value for the \"Configuration\" argument. It takes values from 0 to 3");
@@ -87,7 +87,7 @@ public class Main {
 
             for (File aFilesToObfuscate : filesToObfuscate) {
                 if (aFilesToObfuscate.isFile()) {
-                    FileProcessing.text = fileProcessing.readText(aFilesToObfuscate.getPath());
+                    fp.text = fp.readText(aFilesToObfuscate.getPath());
                     try {
                         String[] conf = cofigurations[Integer.parseInt(System.getProperty("configType"))].split(" ");
                         int i = 0;
@@ -99,7 +99,7 @@ public class Main {
                         }
 
                         pathToFile = new String[]{secondArg.getPath(), aFilesToObfuscate.getName()};
-                        fileProcessing.saveFile(pathToFile);
+                        fp.saveFile(pathToFile);
                     } catch (ArrayIndexOutOfBoundsException exception) {
                         System.out.println("You entered an invalid value for the \"Configuration\" argument. It takes values from 0 to 3");
                     }
